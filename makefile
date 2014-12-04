@@ -1,2 +1,2 @@
 pkg:
-	zip -9 mm.love `find .|grep -v git`
+	zip -9 prince.love `find .|grep -v git`
