@@ -23,7 +23,7 @@ end
 function love.load(t)
   if love.filesystem.getDirectoryItems then require "assets" else require "assets-websafe" end
   require "config"
-  settings=ldconfig()
+  settings=theprinceconfig()
   for i,v in ipairs(t) do
     if i ~= 1 then
       if v:match("=") then

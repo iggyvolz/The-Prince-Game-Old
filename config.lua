@@ -1,8 +1,7 @@
 function love.conf(t)
-  t.identity="mathmerchant"
+  t.identity="the-prince"
 end
-function mmconfig()
+function theprinceconfig()
   return {
-    ["skipintro"] = true
   }
 end
