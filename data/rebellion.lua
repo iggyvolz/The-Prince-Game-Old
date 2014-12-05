@@ -21,7 +21,7 @@ function self.shuffle() -- Shuffles all cards
             table.insert(self.drawpile,false)
         end
     end
-    self.discard={}
+    self.discardpile={}
 end
 function self.draw(x) -- Draws x (int) cards, returns x+1 arguments (overall status (e.g. all cards are true then true else false) then all cards in order)
     local status=true

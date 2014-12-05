@@ -1,6 +1,6 @@
 local self={
     ["principalities"] = require "data/principalities/init",
     ["rebellion"] = require "data/rebellion",
-    ["chance"] = require "data/chance"
+    ["chance"] = require "data/chance/init"
 }
-return table
+return self
