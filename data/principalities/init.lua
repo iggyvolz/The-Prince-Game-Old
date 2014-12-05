@@ -1,4 +1,4 @@
-local table={
+local self={
     ["austria"] = require "data/principalities/austria",
     ["denmark"] = require "data/principalities/denmark",
     ["egypt"] = require "data/principalities/egypt",
@@ -18,4 +18,4 @@ local table={
     ["spain"] = require "data/principalities/spain",
     ["venice"] = require "data/principalities/venice"
 }
-return table
+return self
