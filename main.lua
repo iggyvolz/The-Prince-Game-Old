@@ -14,6 +14,7 @@ assets.__index=assets
 ]]
 settings={
 }
+data=require "data/init"
 function string:split(sep)
   local sep, fields = sep or ":", {}
   local pattern = string.format("([^%s]+)", sep)
