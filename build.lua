@@ -1,21 +1,28 @@
 local lfs = require "lfs"
-
-function attrdir (path,excl)
-    local toreturn={}
+require "io"
+function search (path,excl)
+    local toreturn=""
+    if path == "." then
+        toreturn="local temp,tbl=nil,{}\n" 
+    else
+        toreturn=toreturn.."tbl."..path:gsub("/","."):sub(3).."={}\n"
+    end
     for file in lfs.dir(path) do
         if not excl[file] then
             local f = path..'/'..file
             local attr = lfs.attributes (f)
-            assert (type(attr) == "table")
+            if type(attr) ~= "table" then break end
             if attr.mode == "directory" then
-                local ad=attrdir(f,excl)
-                for i=1,#ad do
-                    table.insert(toreturn,ad[i])
-                end
+                toreturn=toreturn..search(f,excl)
             else
-                table.insert(toreturn,f)
+                name=f:gsub("/","."):sub(3,-5)
+                toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name.."=temp()\n"
             end
         end
     end
+    toreturn=toreturn
     return toreturn
 end
+local thesearch=search(".",{["init.lua"]=true,["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true})
+
+print(thesearch)
