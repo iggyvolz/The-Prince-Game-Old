@@ -3,7 +3,7 @@ require "io"
 function search (path,excl)
     local toreturn=""
     if path == "." then
-        toreturn="local temp,tbl=nil,{}\n" 
+        toreturn="local temp,tbl=nil,{}\n"
     else
         toreturn=toreturn.."tbl."..path:gsub("/","."):sub(3).."={}\n"
     end
@@ -23,6 +23,6 @@ function search (path,excl)
     toreturn=toreturn
     return toreturn
 end
-local thesearch=search(".",{["init.lua"]=true,["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true,["makefile"]=true})
+local thesearch=search(".",{["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true,["makefile"]=true})
 
 print(thesearch)
