@@ -1,3 +1,4 @@
+file := "quick.lua"
 build:
 	lua build.lua>$(file)
-	cat quick.lua>>$(file)
+	echo "src.go()">>$(file)
