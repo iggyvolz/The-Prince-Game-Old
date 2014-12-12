@@ -1,1 +1,1 @@
-print(require "pl.pretty".write(require "data/init"))
+

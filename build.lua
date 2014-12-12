@@ -23,6 +23,6 @@ function search (path,excl)
     toreturn=toreturn
     return toreturn
 end
-local thesearch=search(".",{["init.lua"]=true,["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true})
+local thesearch=search(".",{["init.lua"]=true,["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true,["makefile"]=true})
 
 print(thesearch)
