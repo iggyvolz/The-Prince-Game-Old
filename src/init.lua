@@ -13,7 +13,8 @@ local self=function(r)
     r:wswrite("Goodbye!")
     r:wsclose()
   else
-    r:puts(":(")
+    r.status=405
+    r:puts("405 error - Please use webhooks.  The main page is under construction.")
   end
   return apache2.DONE
 end
