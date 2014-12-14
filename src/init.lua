@@ -14,7 +14,7 @@ local self=function(r)
     r:wsclose()
   else
     r.status=405
-    r:puts("405 error - Please use webhooks.  The main page is under construction.")
+    r:puts("405 error - Please use webhooks.")
   end
   return apache2.DONE
 end
