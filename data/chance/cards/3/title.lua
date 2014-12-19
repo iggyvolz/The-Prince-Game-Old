@@ -1,0 +1,1 @@
+return "It is better to be feared than loved"

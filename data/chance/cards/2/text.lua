@@ -1,0 +1,1 @@
+return "If a rebellion occurs while this card is active, you cannot roll the die to try to put down the rebellion, the property must be lost."
