@@ -1,6 +1,6 @@
 local lfs = require "lfs"
 require "io"
-function search (path,excl)
+local function search (path,excl)
     local toreturn=""
     if path == "." then
         toreturn="local temp,tbl=nil,{}\n"
@@ -15,7 +15,7 @@ function search (path,excl)
             if attr.mode == "directory" then
                 toreturn=toreturn..search(f,excl)
             else
-                name=f:gsub("/","."):sub(3,-5)
+                local name=f:gsub("/","."):sub(3,-5)
                 toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name.."=temp()\n"
             end
         end
