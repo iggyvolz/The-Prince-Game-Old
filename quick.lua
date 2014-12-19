@@ -1,3 +1,3 @@
-function quick(r)
+function quick()
   return apache2.DECLINED
 end

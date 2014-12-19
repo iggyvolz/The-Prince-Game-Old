@@ -1,4 +1,4 @@
-return function(tbl)
+return function()
     parent.cardturnsleft=parent.cardturnsleft-1
     if parent.cardturnsleft>0 then return end
     if #parent.drawpile==0 then parent.shuffle() end

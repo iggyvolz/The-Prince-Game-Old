@@ -1,3 +1,3 @@
-return function(tbl,accepted)
+return function()
     return false
 end
