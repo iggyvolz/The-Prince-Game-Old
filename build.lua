@@ -3,13 +3,9 @@ require "io"
 local function search (path,excl)
   local toreturn=""
   if path == "." then
-    toreturn="local temp,tbl=nil,{}\n"
+    toreturn="local tbl={}\nlocal temp\n"
   else
-    if tonumber(path:gsub("/","."):sub(3)) then
-      toreturn=toreturn.."tbl["..path:gsub("/","."):sub(3).."]={}\n"
-    else
-      toreturn=toreturn.."tbl."..path:gsub("/","."):sub(3).."={}\n"
-    end
+    toreturn=toreturn.."tbl."..path:gsub("/","."):sub(3):gsub("(%.)(%d)","[%2]").."={}\n"
   end
   for file in lfs.dir(path) do
     if not excl[file] then
@@ -20,11 +16,10 @@ local function search (path,excl)
         toreturn=toreturn..search(f,excl)
       else
         local name=f:gsub("/","."):sub(3,-5)
-          toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name.."=temp()\n"
+          toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name:gsub("(%.)(%d)","[%2]").."=temp()\n"
         end
       end
     end
-  toreturn=toreturn
   return toreturn
 end
 local thesearch=search(".",{["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true,["makefile"]=true,["remap.lua"]=true,["go.lua"]=true,["index.html"]=true})
