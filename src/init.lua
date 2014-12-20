@@ -2,7 +2,8 @@ return function(tbl)
   return function(r)
     local json=require "json"
     if r:wsupgrade() then
-      local function doscan(t)
+      local function doscan(_t)
+        local t=_t
         for i in pairs(t) do
           if type(t[i])=="table" then
             t[i]=doscan(t[i])
