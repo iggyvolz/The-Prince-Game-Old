@@ -1,0 +1,1 @@
+return "Peace in Europe"
