@@ -1,4 +1,4 @@
-return function(l,r)
+return function(l)
   --local md5=require "md5"
   local json=require "json"
   local function exists(f)
