@@ -29,7 +29,7 @@ return function(l,r)
       ["enable_bbcode"]=false,
       ["enable_smilies"]=false,
       ["enable_urls"]=false,
-      ["enable_sid"]=false,
+      ["enable_sig"]=false,
       ["message"]=l,
       ["message_md5"]=nil, -- SET FROM md5($data["message"])
       ["bbcode_bitfield"]=nil, -- SET FROM $bitfield
