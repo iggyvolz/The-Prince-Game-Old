@@ -45,7 +45,7 @@ return function(l)
     ["sql"]="SELECT * FROM phpbb_users WHERE user_id = 48"
   }
   io.open(path..num, "w"):write(json.encode(globals)):close()
-  io.popen("cd /usr/local/The-Prince-Game;php log.php "..path..num)
+  io.popen("php /usr/local/The-Prince-Game/log.php /var/log/the_prince/20")
   --print(phpcode)
   --print(path..num)
 end

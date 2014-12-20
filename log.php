@@ -1,4 +1,5 @@
 <?php
+set_include_path(get_include_path() . PATH_SEPARATOR . "/usr/local/The-Prince-Game/forums");
 $conts=json_decode(file_get_contents($argv[1]),true);
 foreach($conts as $a=>$b){$GLOBALS[$a]=$b;}
 define("IN_PHPBB",true);
