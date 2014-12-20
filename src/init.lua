@@ -1,3 +1,4 @@
+local json=require "json"
 return function(tbl)
   return function(r)
     if r:wsupgrade() then
@@ -11,7 +12,7 @@ return function(tbl)
         end
         return t
       end
-      r:wswrite(require "pl.pretty".write(scan(tbl)))
+      r:wswrite(json.encode(scan(tbl)))
       r:wsclose()
     else
       r.status=405
