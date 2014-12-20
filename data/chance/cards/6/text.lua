@@ -1,0 +1,1 @@
+return "England has decided to split from the Catholic Church.\n\nChurch taxes now go directly to the government of England.  For 3 turns, England's tribute now rises to $500 while the Papal States' tribute now falls to $300."
