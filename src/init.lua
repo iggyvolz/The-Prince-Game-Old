@@ -2,15 +2,20 @@ local json=require "json"
 return function(tbl)
   return function(r)
     if r:wsupgrade() then
-      local function scan(t)
+      local function doscan(t)
         for i in pairs(t) do
           if type(t[i])=="table" then
-            t[i]=scan(t[i])
+            t[i]=doscan(t[i])
           elseif type(t[i])=="function" then
             t[i]=nil
           end
         end
         return t
+      end
+      local function scan(t)
+        -- Delete protected directories from client sending
+        t.src=nil
+        return doscan(t)
       end
       r:wswrite(json.encode(scan(tbl)))
       r:wsclose()
