@@ -1,0 +1,1 @@
+return "Church imposes tithe"
