@@ -11,7 +11,7 @@ return function(l)
     num=num+1
   end
   local globals={
-    ["phpbb_root_path"]="./",
+    ["phpbb_root_path"]="/usr/local/The-Prince-Game/forums/",
     ["phpEx"]="php",
     ["mode"]="post",
     ["subject"]="Log #"..num,
