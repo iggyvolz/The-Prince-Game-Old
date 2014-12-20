@@ -1,5 +1,4 @@
 return function(l)
-  --local md5=require "md5"
   local json=require "json"
   local function exists(f)
     local h=io.open(f,"r")
@@ -31,9 +30,9 @@ return function(l)
       ["enable_urls"]=false,
       ["enable_sig"]=false,
       ["message"]=l,
-      ["message_md5"]=nil, -- SET FROM md5($data["message"])
-      ["bbcode_bitfield"]=nil, -- SET FROM $bitfield
-      ["bbcode_uid"]=nil, -- SET FROM $uid
+      ["message_md5"]=nil,
+      ["bbcode_bitfield"]=nil,
+      ["bbcode_uid"]=nil,
       ["post_edit_locked"]=0,
       ["topic_title"]="Log #"..num,
       ["notify_set"]=false,
@@ -46,6 +45,4 @@ return function(l)
   }
   io.open(path..num, "w"):write(json.encode(globals)):close()
   io.popen("php /usr/local/The-Prince-Game/log.php "..path..num)
-  --print(phpcode)
-  --print(path..num)
 end

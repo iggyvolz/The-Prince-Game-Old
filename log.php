@@ -15,4 +15,4 @@ $db->sql_freeresult($result);
 $user->data = array_merge($user->data, $row);
 $auth->acl($user->data);
 $user->ip = '0.0.0.0';
-var_dump(submit_post($mode,$subject,$username,$topic_type,$poll,$data));
+submit_post($mode,$subject,$username,$topic_type,$poll,$data);
