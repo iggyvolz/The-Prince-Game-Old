@@ -1,7 +1,6 @@
 return function(l,r)
   --local md5=require "md5"
   local json=require "json"
-  local phpcode="$conts=json_decode(file_get_contents($argv[1]));foreach($conts as $a=>$b){$GLOBALS[$a]=$b;} define(\"IN_PHPBB\",true);require \"/usr/local/The-Prince-Game/forums/common.php\";require \"/usr/local/The-Prince-Game/forums/includes/functions_posting.php\";generate_text_for_storage($subject, $uid, $bitfield, $options, false, false, false);generate_text_for_storage($message, $uid, $bitfield, $options, false, false, false);$data[\"message_md5\"]=md5($data[\"message\"]);$data[\"bbcode_bitfield\"]=$bitfield;$data[\"bbcode_uid\"]=$uid;$result = $db->sql_query($sql);$row = $db->sql_fetchrow($result);$db->sql_freeresult($result);$user->data = array_merge($user->data, $row);$auth->acl($user->data);$user->ip = '0.0.0.0';var_dump(submit_post($mode,$subject,$username,$topic_type,$poll,$data));"
   local function exists(f)
     local h=io.open(f,"r")
     if h then h:close() return true else return false end
@@ -46,7 +45,7 @@ return function(l,r)
     ["sql"]="SELECT * FROM phpbb_users WHERE user_id = 48"
   }
   io.open(path..num, "w"):write(json.encode(globals)):close()
-  r:trace1(io.popen("php -r '"..phpcode.."' "..path..num.." 2>&1"):read("*a"))
+  r:trace1(io.popen("php /usr/local/The-Prince-Game/log.php "..path..num.." 2>&1"):read("*a"))
   --print(phpcode)
   --print(path..num)
 end
