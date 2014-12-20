@@ -1,6 +1,6 @@
-local json=require "json"
 return function(tbl)
   return function(r)
+    local json=require "json"
     if r:wsupgrade() then
       local function doscan(t)
         for i in pairs(t) do
