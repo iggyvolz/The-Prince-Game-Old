@@ -1,5 +1,5 @@
 <?php
-$conts=json_decode(file_get_contents($argv[1]));
+$conts=json_decode(file_get_contents($argv[1]),true);
 foreach($conts as $a=>$b){$GLOBALS[$a]=$b;}
 define("IN_PHPBB",true);
 require "/usr/local/The-Prince-Game/forums/common.php";
