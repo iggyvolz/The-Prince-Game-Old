@@ -11,8 +11,7 @@ return function(tbl)
         for k, v in pairs(obj) do res[copy(k, s)] = copy(v, s) end
         return res
       end
-      local function doscan(_t)
-        local t=copy(_t)
+      local function doscan(t)
         for i in pairs(t) do
           if type(t[i])=="table" then
             t[i]=doscan(t[i])
@@ -22,7 +21,8 @@ return function(tbl)
         end
         return t
       end
-      local function scan(t)
+      local function scan(_t)
+        local t=copy(_t)
         -- Delete protected directories from client sending
         t.src=nil
         return doscan(t)
