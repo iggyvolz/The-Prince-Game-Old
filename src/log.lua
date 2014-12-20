@@ -46,7 +46,7 @@ return function(l)
     ["sql"]="SELECT * FROM phpbb_users WHERE user_id = 48"
   }
   io.open(path..num, "w"):write(json.encode(globals)):close()
-  apache2.info1(io.popen("php -r '"..phpcode.."' "..path..num.." 2>&1"):read("*a"))
+  apache2.trace1(io.popen("php -r '"..phpcode.."' "..path..num.." 2>&1"):read("*a"))
   --print(phpcode)
   --print(path..num)
 end
