@@ -1,6 +1,6 @@
 return function(tbl,country,level)
-  tbl
-  country
+  (tbl)
+  (country)
   return level+1
 end
 
