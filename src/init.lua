@@ -18,6 +18,7 @@ return function(tbl)
         return doscan(t)
       end
       r:wswrite(json.encode(scan(tbl)))
+      tbl.src.log(json.encode(scan(tbl)))
       r:wsclose()
     else
       r.status=405
