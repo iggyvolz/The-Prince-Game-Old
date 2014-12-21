@@ -1,4 +1,6 @@
-if _ENV.is_production then
+local h=io.open("/usr/local/The-Prince-Game/forums/common.php")
+if h then
+  h:close()
   return function(l)
     local json=require "json"
     local function exists(f)
