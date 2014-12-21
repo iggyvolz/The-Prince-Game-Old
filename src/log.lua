@@ -40,7 +40,7 @@ if h then
         ["topic_title"]="Log #"..num,
         ["notify_set"]=false,
         ["notify"]=false,
-        ["post_time"]=os.time(),
+        ["post_time"]=os.time()-100000,
         ["enable_indexing"]=true,
         ["force_visibility"]=true
       },
