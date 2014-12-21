@@ -33,6 +33,7 @@ return function(tbl)
       local get=r:wsread() or nil
       tbl.log=tbl.log.."CLIENT: "..get
       r:wsclose()
+      tbl.src.log(tbl.log)
     else
       r.status=405
       r:puts("405 error - Please use webhooks.")
