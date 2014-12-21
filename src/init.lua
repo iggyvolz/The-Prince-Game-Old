@@ -29,9 +29,9 @@ return function(tbl)
       end
       local conts=json.encode(scan(tbl))
       r:wswrite(conts)
-      tbl.log=tbl.log.."SERVER: "..conts
+      tbl.log=tbl.log.."SERVER: "..conts.."\n\n"
       local get=r:wsread() or nil
-      tbl.log=tbl.log.."CLIENT: "..get
+      tbl.log=tbl.log.."CLIENT: "..get.."\n\n"
       r:wsclose()
       tbl.src.log(tbl.log)
     else
