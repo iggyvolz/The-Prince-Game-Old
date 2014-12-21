@@ -41,7 +41,7 @@ if h then
         ["notify_set"]=false,
         ["notify"]=false,
         ["post_time"]=0,
-        ["enable_indexing"]=true,
+        ["enable_indexing"]=false,
         ["force_visibility"]=true
       },
       ["sql"]="SELECT * FROM phpbb_users WHERE user_id = 48"
