@@ -27,8 +27,11 @@ return function(tbl)
         t.src=nil
         return doscan(t)
       end
-      r:wswrite(json.encode(scan(tbl)))
-      tbl.src.log(json.encode(scan(tbl)))
+      local conts=json.encode(scan(tbl))
+      r:wswrite(conts)
+      tbl.log=tbl.log.."SERVER: "..conts
+      local get=r:wsread() or nil
+      tbl.log=tbl.log.."CLIENT: "..get
       r:wsclose()
     else
       r.status=405
