@@ -35,7 +35,7 @@ return function(tbl)
         local ok,get=pcall(function() return json.decode(conts) or nil end)
         if not ok then tbl.log=tbl.log.."\n\nJSON DECODING FAILED: "..get r:wswrite(json.encode({["action"]=get.action,["err"]={["msg"]="INVALID JSON",["fatal"]=true,["code"]=1}})) break end
         if tbl.src.actions[get.action] then
-          local conts,err=tbl.src.actions[get.action].run(get.data)
+          local conts,err=tbl.src.actions[get.action].run(tbl,get.data)
           tbl.log=tbl.log.."\n\nSERVER: "..json.encode(conts)
           if err then tbl.log=tbl.log.."\n\nERROR: "..json.encode(err) end
           r:wswrite(json.encode({["action"]=get.action,["data"]=conts,["err"]=err}))
