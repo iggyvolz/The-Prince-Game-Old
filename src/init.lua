@@ -42,6 +42,7 @@ return function(tbl)
           if err then if err.fatal then tbl.log=tbl.log.."\n\nFATAL ERROR - CLOSING CONNECTION" break end end
         else
           tbl.log=tbl.log.."\n\nACTION NOT RECOGNIZED: \""..get.action.."\" - CLOSING CONNECTION"
+          r:wswrite(json.encode({["action"]=get.action,["err"]={["msg"]="ACTION NOT FOUND",["fatal"]=true,["code"]=2}}))
           break
         end
       end
