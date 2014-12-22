@@ -51,6 +51,15 @@ if h then
   end
 else
   return function(l)
-    apache2.trace1(l)
+    local path="/var/log/the_prince/"
+    local num=1
+    local function exists(f)
+      local h=io.open(f,"r")
+      if h then h:close() return true else return false end
+    end
+    while exists(path..num) do
+      num=num+1
+    end
+    io.open(path..num, "w"):write(l):close()
   end
 end
