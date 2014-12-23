@@ -31,10 +31,11 @@ $user->ip = '0.0.0.0';
 submit_post($mode,$subject,$username,$topic_type,$poll,$data);
 $token="gqEC5ltd7fDKdbjFMYC5A9TOxlDJWZAa2Ppwy5uw";
 $url = "https://api.hipchat.com/v2/room/1052690/notification?auth_token=$token";
+$hmessage=htmlspecialchars($message);
 $options = array(
   'auth_token' => $token,
   'color' => 'green',
-  'message' => "<h3>$subject</h3>$message",
+  'message' => "<h3>$subject</h3>$hmessage",
   'notify' => true,
   'message_format' => 'html'
 );
