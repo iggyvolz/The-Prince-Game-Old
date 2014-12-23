@@ -1,7 +1,7 @@
 local function s(t)
   local d={["s"]=0,["p"]="AM",["m"]=0,["y"]=0,["h"]=0,["i"]=0}
-  d.y=2014 -- d.year=2015
-  t=t-1388552400 -- t=t-1420088400
+  d.year=2015
+  t=t-1420088400
   d.d=math.floor(t/86400)
   d.s=t-d.d*86400
 
