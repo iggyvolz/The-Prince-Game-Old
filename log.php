@@ -12,7 +12,7 @@ $options="";
 $topic_type=0;
 $poll=null;
 $sql="SELECT * FROM phpbb_users WHERE user_id = 48";
-$data=["forum_id"=>7,"topic_title"=>"Log #$n","icon_id"=>false,"enable_bbcode"=>false,"enable_smilies"=>false,"enable_urls"=>false,"enable_sig"=>false,"message"=>l,"message_md5"=>null,
+$data=["forum_id"=>7,"topic_title"=>"Log #$n","icon_id"=>false,"enable_bbcode"=>false,"enable_smilies"=>false,"enable_urls"=>false,"enable_sig"=>false,"message"=>$message,"message_md5"=>null,
 "bbcode_bitfield"=>null,"bbcode_uid"=>null,"post_edit_locked"=>0,"topic_title"=>"Log #$n","notify_set"=>false,"notify"=>false,"post_time"=>0,"enable_indexing"=>false,"force_visibility"=>true];
 define("IN_PHPBB",true);
 require "/usr/local/The-Prince-Game/forums/common.php";
