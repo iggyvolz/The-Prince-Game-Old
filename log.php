@@ -29,3 +29,22 @@ $user->data = array_merge($user->data, $row);
 $auth->acl($user->data);
 $user->ip = '0.0.0.0';
 submit_post($mode,$subject,$username,$topic_type,$poll,$data);
+$token="gqEC5ltd7fDKdbjFMYC5A9TOxlDJWZAa2Ppwy5uw";
+$url = "https://api.hipchat.com/v2/room/1052690/notification?auth_token=$token";
+$options = array(
+  'auth_token' => $token,
+  'color' => 'green',
+  'message' => "<h3>$subject</h3>$message",
+  'notify' => true,
+  'message_format' => 'html'
+);
+$options = json_encode($options);
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $options);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  'Content-Type: application/json',
+  'Content-Length: ' . strlen($options))
+);
+$var = curl_exec($ch);
