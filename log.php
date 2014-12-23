@@ -35,7 +35,7 @@ $hmessage=htmlspecialchars($message);
 $options = array(
   'auth_token' => $token,
   'color' => 'green',
-  'message' => "$subject <p>$hmessage</p>",
+  'message' => "$subject <br/><br/><p>$hmessage</p>",
   'notify' => false,
   'message_format' => 'html'
 );
