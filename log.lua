@@ -27,4 +27,4 @@ local function s(t)
   d.i=d.i-d.h*60
   return d.m.."/"..d.d.."/"..d.y.." "..d.h..":"..d.i..":"..d.s.." "..d.p.." EASTERN TIME"
 end
-return function(r) return "LOG BEGINS AT "..s(r) end
+return "LOG BEGINS AT "..s(os.time())
