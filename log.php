@@ -35,8 +35,8 @@ $hmessage=htmlspecialchars($message);
 $options = array(
   'auth_token' => $token,
   'color' => 'green',
-  'message' => "<span style="font-size: 100%;. color: #730E15;. line-height: 1.5em;">$subject</span> <p>$hmessage</p>",
-  'notify' => true,
+  'message' => "<span style="font-size: 250%;">$subject</span> <p>$hmessage</p>",
+  'notify' => false,
   'message_format' => 'html'
 );
 $options = json_encode($options);
