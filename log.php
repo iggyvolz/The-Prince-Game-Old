@@ -1,6 +1,19 @@
 <?php
-$conts=json_decode(file_get_contents($argv[1]),true);
-foreach($conts as $a=>$b){$GLOBALS[$a]=$b;}
+$n=$argv[1];
+$phpbb_root_path="/usr/local/The-Prince-Game/forums/";
+$phpEx="php";
+$mode="post";
+$subject="Log #".$n;
+$message=file_get_contents("/var/log/the_prince/$n");
+$username="The_Prince_Bot";
+$uid=48;
+$bitfield="";
+$options="";
+$topic_type=0;
+$poll=null;
+$sql="SELECT * FROM phpbb_users WHERE user_id = 48";
+$data=["forum_id"=>7,"topic_title"=>"Log #$n","icon_id"=>false,"enable_bbcode"=>false,"enable_smilies"=>false,"enable_urls"=>false,"enable_sig"=>false,"message"=>l,"message_md5"=>null,
+"bbcode_bitfield"=>null,"bbcode_uid"=>null,"post_edit_locked"=>0,"topic_title"=>"Log #$n","notify_set"=>false,"notify"=>false,"post_time"=>0,"enable_indexing"=>false,"force_visibility"=>true];
 define("IN_PHPBB",true);
 require "/usr/local/The-Prince-Game/forums/common.php";
 require "/usr/local/The-Prince-Game/forums/includes/functions_posting.php";
