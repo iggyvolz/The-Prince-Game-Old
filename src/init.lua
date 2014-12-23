@@ -28,6 +28,7 @@ return function(tbl)
         return doscan(t)
       end
       r:wswrite(json.encode({["action"]="INIT",["data"]=scan(tbl)}))
+      tbl.log=tbl.log.."\n\nFROM IP ADDRESS "..r.useragent_ip
       while true do
         local conts=r:wsread() or nil
         tbl.log=tbl.log.."\n\nCLIENT: "..conts
