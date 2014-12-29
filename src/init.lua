@@ -38,7 +38,7 @@ return function(tbl)
           if conts then break end
           if not r:wsping() then tbl.log=tbl.log.."\n\nCONNECTION CLOSED BY CLIENT" die=true break end
         end
-        if die then break
+        if die then break end
         tbl.log=tbl.log.."\n\nCLIENT: "..conts
         local ok,get=pcall(function() return json.decode(conts) or nil end)
         if not ok then tbl.log=tbl.log.."\n\nJSON DECODING FAILED: "..get r:wswrite(json.encode({["action"]=get.action,["err"]={["msg"]="INVALID JSON",["fatal"]=true,["code"]=1}})) break end
