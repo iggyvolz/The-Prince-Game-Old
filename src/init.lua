@@ -32,8 +32,9 @@ return function(tbl)
       r:wswrite(json.encode({["action"]="INIT",["data"]=scan(tbl)}))
       tbl.log=tbl.log.."\n\nFROM IP ADDRESS "..r.useragent_ip
       while true do
+        local conts
         while true do
-          local conts=r:wsread() or nil
+          conts=r:wsread() or nil
           if conts then break end
           if not r:ping() then tbl.log=tbl.log.."\n\nCONNECTION CLOSED BY CLIENT" break break end
         end
