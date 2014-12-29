@@ -36,7 +36,7 @@ return function(tbl)
         while true do
           conts=r:wsread() or nil
           if conts then break end
-          if not r:ping() then tbl.log=tbl.log.."\n\nCONNECTION CLOSED BY CLIENT" break break end
+          if not r:wsping() then tbl.log=tbl.log.."\n\nCONNECTION CLOSED BY CLIENT" break break end
         end
         tbl.log=tbl.log.."\n\nCLIENT: "..conts
         local ok,get=pcall(function() return json.decode(conts) or nil end)
