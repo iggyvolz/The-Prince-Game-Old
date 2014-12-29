@@ -9,6 +9,7 @@ return function(r,tbl,data)
     db,err=r:dbacquire("mysql", "host=127.0.0.1,user=root,pass=,dbname=phpbb")
   end
   if err then
+    tbl.log=tbl.log.."\n\nDB ERROR: "..require "pl.pretty".write(err)
     return "ERROR",{["fatal"]=true,["code"]=5,["msg"]="COULD NOT CONNECT TO DB"}
   end
   statement,err=db:prepare(r,"SELECT * FROM `phpbb_sessions` WHERE `session_id`=%s")
