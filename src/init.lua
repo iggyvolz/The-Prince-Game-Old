@@ -32,11 +32,12 @@ return function(tbl)
       r:wswrite(json.encode({["action"]="INIT",["data"]=scan(tbl)}))
       tbl.log=tbl.log.."\n\nFROM IP ADDRESS "..r.useragent_ip
       while true do
-        local conts,die
+        local conts,die,starttime
+        starttime=os.time()
         while true do
           conts=r:wsread() or nil
           if conts then break end
-          if not r:wsping() then tbl.log=tbl.log.."\n\nCONNECTION CLOSED BY CLIENT" die=true break end
+          if os.time()>starttime+30 then die=true break end
         end
         if die then break end
         tbl.log=tbl.log.."\n\nCLIENT: "..conts
