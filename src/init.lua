@@ -32,14 +32,8 @@ return function(tbl)
       r:wswrite(json.encode({["action"]="INIT",["data"]=scan(tbl)}))
       tbl.log=tbl.log.."\n\nFROM IP ADDRESS "..r.useragent_ip
       while true do
-        local conts,die,starttime
-        starttime=os.time()
-        while true do
-          conts=r:wsread() or nil
-          if conts then break end
-          if os.time()>starttime+30 then die=true break end
-        end
-        if die then break end
+        local conts=r:wsread() or nil
+        if not conts then break end
         tbl.log=tbl.log.."\n\nCLIENT: "..conts
         local ok,get=pcall(function() return json.decode(conts) or nil end)
         if not ok then tbl.log=tbl.log.."\n\nJSON DECODING FAILED: "..get r:wswrite(json.encode({["action"]=get.action,["err"]={["msg"]="INVALID JSON",["fatal"]=true,["code"]=1}})) break end
