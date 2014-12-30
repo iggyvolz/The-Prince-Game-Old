@@ -12,14 +12,7 @@ if(in_array($user,$banlist))
 else
 {
   $expl=explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"));
-  if(count($banlist)==0)
-  {
-    $conts=$expl[0]."\"$user\"}\n end\ntbl.bans=temp()".$expl[1];
-  }
-  else
-  {
-    $conts=$expl[0].",\"$user\"}\n end\ntbl.bans=temp()".$expl[1];
-  }
+  $conts=$expl[0].",\"$user\"}\n end\ntbl.bans=temp()".$expl[1];
   file_put_contents("go.lua",$conts);
   $user=htmlspecialchars($user);
   $data="User \"$user\" has been banned";

@@ -5,6 +5,11 @@ $ptbanlist=explode("return {",explode("}\n end\ntbl.bans=temp()",file_get_conten
 $end="}\n end\ntbl.bans=temp()".explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[1];
 $msg=json_decode(file_get_contents("php://input"))->item->message->message;
 $user=explode("@unbanish ",$msg)[1];
+if($user=="The-Prince-Bot")
+{
+  $data="ERROR: The-Prince-Bot cannot be removed from the ban list per iggyvolz's orders";
+  $color="red";
+}
 if(!in_array($user,$banlist))
 {
   $user=htmlspecialchars($user);
@@ -13,7 +18,7 @@ if(!in_array($user,$banlist))
 }
 else
 {
-  $conts=$begin.str_replace("\"$user\"","",str_replace(",\"$user\"","",str_replace("\"$user\",","",$ptbanlist))).$end;
+  $conts=$begin.str_replace("\"$user\",","",$ptbanlist).$end;
   file_put_contents("go.lua",$conts);
   $user=htmlspecialchars($user);
   $data="User \"$user\" has been unbanned";
