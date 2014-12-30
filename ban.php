@@ -6,7 +6,7 @@ $user=explode("@banish ",$msg)[1];
 if(in_array($user,$banlist))
 {
   $user=htmlspecialchars($user);
-  $data="User $user already banned";
+  $data="User \"$user\" already banned";
   $color="red";
 }
 else
@@ -15,7 +15,7 @@ else
   $conts=$expl[0].",\"$user\"}\n end\ntbl.bans=temp()".$expl[1];
   file_put_contents("go.lua",$conts);
   $user=htmlspecialchars($user);
-  $data="User $user has been banned";
+  $data="User \"$user\" has been banned";
   $color="green";
 }
 define("ROOM_NAME","The Prince");
