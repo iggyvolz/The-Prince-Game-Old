@@ -1,5 +1,14 @@
 <?php
-$data="Ban list: ".implode(", ",explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1])));
+$msg=json_decode(file_get_contents("php://input"))->item->message->message;
+if(count(explode("quotes",$msg))>1)
+{
+  $data=explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1];
+}
+else
+{
+  $data="Ban list: ".implode(", ",explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1])));
+}
+die($data);
 define("ROOM_NAME","The Prince");
 define("ROOM_ID",1052690);
 define("TOKEN","6fEaJ9afkF23XndQnWE4thaOAAUZldKF0hw7LaiR");
