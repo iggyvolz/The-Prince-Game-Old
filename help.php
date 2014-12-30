@@ -1,6 +1,6 @@
 <?php
 $msg=json_decode(file_get_contents("php://input"))->item->message->message;
-$data="<p>@banish (user) - bans (user)</p>@unbanish (user) - unbans (user)</p><p>@banlist [quotes] - displays banlist, or banlist with quotes if quotes included in message</p><p>@isbanished (user) - returns if user is banned or not</p>";
+$data="<p>@banish (user) - bans (user)</p>@unbanish (user) - unbans (user)</p><p>@banlist [quotes] - displays banlist, or banlist with quotes if quotes included in message</p><p>@isbanished (user) - returns if user is banned or not</p><p>@help - display this help</p>";
 define("ROOM_NAME","The Prince");
 define("ROOM_ID",1052690);
 define("TOKEN","6fEaJ9afkF23XndQnWE4thaOAAUZldKF0hw7LaiR");
