@@ -10,7 +10,7 @@ if($user=="The-Prince-Bot")
   $data="ERROR: The-Prince-Bot cannot be removed from the ban list per iggyvolz's orders";
   $color="red";
 }
-if(!in_array($user,$banlist))
+elseif(!in_array($user,$banlist))
 {
   $user=htmlspecialchars($user);
   $data="User \"$user\" is not banned";
