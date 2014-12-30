@@ -1,5 +1,4 @@
 <?php
-if($_GET["p"]!=="ucn9aVcQ864dk42uyrBecZ4Po") {exit;}
 $data="Ban list: ".implode(", ",explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1])));
 define("ROOM_NAME","The Prince");
 define("ROOM_ID",1052690);
