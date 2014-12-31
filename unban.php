@@ -18,7 +18,7 @@ elseif(!in_array($user,$banlist))
 }
 else
 {
-  $conts=$begin.str_replace("\"$user\",","",$ptbanlist).$end;
+  $conts=$begin.str_replace(",\"$user\"","",$ptbanlist).$end;
   file_put_contents("go.lua",$conts);
   $user=htmlspecialchars($user);
   $data="User \"$user\" has been unbanned";
