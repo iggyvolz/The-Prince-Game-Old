@@ -1,5 +1,5 @@
 return function(tbl)
-  return function(r)
+  local interior=function(r)
     local json=require "json"
     local md5=require "md5"
     if r:wsupgrade() then
@@ -56,5 +56,12 @@ return function(tbl)
       r:puts("405 error - Please use webhooks.")
     end
     return apache2.DONE
+  end
+  return function(r)
+    local ok,msg=pcall(interior(r))
+    if ok then return msg end
+    tbl.log=tbl.log.."\n\nSUPER-FATAL ERROR: "..require "pl.pretty".write(msg)
+    local num=tbl.src.log(tbl.log)
+    r:puts("We had a super-fatal error.  Sorry about that.  Please report on the <a href=\"https://theprincegame.com/forums\">forums</a>, mentioning that you are log #"..num)
   end
 end

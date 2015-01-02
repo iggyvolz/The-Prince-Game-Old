@@ -11,4 +11,5 @@ return function(l)
     io.open(path..num, "w"):write(l):close()
     local h=io.open("/usr/local/The-Prince-Game/forums/common.php")
     if h then h:close() io.popen("php /usr/local/The-Prince-Game/log.php "..num) end
+    return num
 end
