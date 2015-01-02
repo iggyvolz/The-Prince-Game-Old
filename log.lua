@@ -22,7 +22,6 @@ local function s(t)
   end
   d.i=math.floor(d.s/60)
   d.s=d.s-d.i*60
-  require "pl.pretty".dump(d)
   d.h=math.floor(d.i/60)
   d.i=d.i-d.h*60
   return d.m.."/"..d.d.."/"..d.y.." "..d.h..":"..d.i..":"..d.s.." "..d.p.." EASTERN TIME"
