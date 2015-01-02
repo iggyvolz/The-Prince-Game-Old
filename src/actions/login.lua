@@ -1,44 +1,42 @@
-return function(r,tbl,data)
-  local db,err,statement,row,row2,uid
+return function(tbl,data)
+  local db=tbl.db.conn
+  local c,err,row,uid,row2
   if not data then return "ERROR",{["fatal"]=true,["code"]=4,["msg"]="INVALID SID"} end
-  local h=io.open("/usr/local/The-Prince-Game/forums/common.php")
-  if h then
-    h:close()
-    db,err=r:dbacquire("mysql", "host=127.0.0.1,user=root,pass=tdRp4ZrcQBcRAukCdiYL7HZxDLENXR,dbname=phpbb")
-  else
-    db,err=r:dbacquire("mysql", "host=127.0.0.1,user=root,pass=,dbname=phpbb")
-  end
-  if err then
-    tbl.log=tbl.log.."\n\nDB ERROR: "..require "pl.pretty".write(err)
-    return "ERROR",{["fatal"]=true,["code"]=5,["msg"]="COULD NOT CONNECT TO DB"}
-  end
-  statement,err=db:prepare(r,"SELECT * FROM `phpbb_sessions` WHERE `session_id`=%s")
+  c,err=db:execute("SELECT * FROM `phpbb_sessions` WHERE `session_id`=\""..db:escape(data).."\"")
   if err then
     db:close()
+    tbl.db.env:close()
+    tbl.log=tbl.log.."\n\nDB ERROR: "..require "pl.pretty".write(err)
     return "ERROR",{["fatal"]=true,["code"]=6,["msg"]="DB STATEMENT ERROR"}
   end
-  statement:select(data)
-  row=statement(0)[1]
+  row=table.pack(c:fetch({},"a"))
   if not row then
     db:close()
-    return "ERROR",{["fatal"]=true,["code"]=10,["msg"]="INVALD SID"}
+    tbl.db.env:close()
+    tbl.log=tbl.log.."\n\nSID NOT FOUND"
+    return "ERROR",{["fatal"]=true,["code"]=7,["msg"]="INVALID SID"}
   end
-  uid=row["session_user_id"]
+  uid=row.session_user_id
   if uid==1 or uid==nil then
     db:close()
-    return "ERROR",{["fatal"]=true,["code"]=7,["msg"]="CANNOT LOG IN AS ANONYMOUS"}
+    tbl.db.env:close()
+    tbl.log=tbl.log.."\n\nANONYMOUS LOGIN ATTEMPTED"
+    return "ERROR",{["fatal"]=true,["code"]=8,["msg"]="INVALID SID"}
   end
-  statement,err=db:prepare(r,"SELECT * FROM `phpbb_users` WHERE `user_id`=%u")
+  c,err=db:execute("SELECT * FROM `phpbb_users` WHERE `user_id`="..db:escape(uid))
   if err then
     db:close()
-    return "ERROR",{["fatal"]=true,["code"]=8,["msg"]="DB STATEMENT ERROR"}
+    tbl.db.env:close()
+    tbl.log=tbl.log.."\n\nINVALID UID"
+    return "ERROR",{["fatal"]=true,["code"]=9,["msg"]="DB STATEMENT ERROR"}
   end
-  statement:select(uid)
-  row2=statement(0)[1]
-  tbl.username=row2["username"]
+  row2=c:fetch({},"a")
+  tbl.username=row2.username
   if tbl.bans[tbl.username] then
     db:close()
-    return "ERROR",{["fatal"]=true,["code"]=9,["msg"]="USER IS BANNED"}
+    tbl.db.env:close()
+    tbl.log=tbl.log.."\n\nUSER BANNED"
+    return "ERROR",{["fatal"]=true,["code"]=10,["msg"]="USER IS BANNED"}
   end
   tbl.log=tbl.log.."\n\nLOGGED IN AS "..tbl.username.."\n\nSESSION: "..require "pl.pretty".write(row).."\n\nUSER DATA: "..require "pl.pretty".write(row2)
   db:close()
