@@ -1,9 +1,9 @@
-branch := "dev"
-build_target := "$(branch).lua"
-build_ignore := "build quick remap dev"
-deploy_target := "/usr/local/The-Prince-Game/$(branch).lua"
-globals := "apache2 remap handle quick parent"
-site_deploy_files := "quick.lua remap.lua index.html log.php banlist.php ban.php unban.php isbanned.php help.php"
+branch := dev
+build_target := $(branch).lua
+build_ignore := build quick remap dev
+deploy_target := /usr/local/The-Prince-Game/$(branch).lua
+globals := apache2 remap handle quick parent
+site_deploy_files := quick.lua remap.lua index.html log.php banlist.php ban.php unban.php isbanned.php help.php
 build:
 	@lua build.lua $(build_ignore)>$(build_target)
 check: build
