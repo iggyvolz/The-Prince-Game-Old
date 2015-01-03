@@ -1,9 +1,9 @@
 return function(tbl)
-  if not r:wsupgrade() then
-    r.status=405
-    r:puts("405 error - Please use webhooks.")
-  end
   return function(r)
+    if not r:wsupgrade() then
+      r.status=405
+      r:puts("405 error - Please use webhooks.")
+    end
     local interior=function()
       local json=require "json"
       local md5=require "md5"
