@@ -3,6 +3,7 @@ return function(tbl)
     local json=require "json"
     local md5=require "md5"
     if r:wsupgrade() then
+      tbl.log=tbl.log.."\n\n ALIVE"
       math.randomseed(tonumber(md5.sumhexa(io.open("/var/log/the_prince/"..io.popen("ls -t /var/log/the_prince|head -n1"):read()):read("*a")):gsub("a","10"):gsub("b","11"):gsub("c","12"):gsub("d","13"):gsub("e","14"):gsub("f","15"):lower()))
       local function copy(obj, seen)
         if type(obj) ~= 'table' then return obj end
@@ -58,10 +59,6 @@ return function(tbl)
     return apache2.DONE
   end
   return function(r)
-    local ok,msg=pcall(interior(r))
-    if ok then return msg end
-    tbl.log=tbl.log.."\n\nSUPER-FATAL ERROR: "..require "pl.pretty".write(msg)
-    local num=tbl.src.log(tbl.log)
-    r:puts("We had a super-fatal error.  Sorry about that.  Please report on the <a href=\"https://theprincegame.com/forums\">forums</a>, mentioning that you are log #"..num)
+    xpcall(interior(r),function(...) tbl.log=tbl.log.."\n\nSUPER-FATAL ERROR: "..require "pl.pretty".write(...).."\n\nTRACEBACK: "..debug.traceback() end)
   end
 end
