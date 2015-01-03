@@ -1,5 +1,13 @@
 local lfs = require "lfs"
 require "io"
+local function isnt_ignored(f)
+  for v in ipairs(arg) do
+    if v == f:sub(-4,-1) then
+      return false
+    end
+  end
+  return true
+end
 local function search (path,excl)
   local toreturn=""
   if path == "." then
@@ -14,14 +22,14 @@ local function search (path,excl)
       if type(attr) ~= "table" then break end
       if attr.mode == "directory" then
         toreturn=toreturn..search(f,excl)
-      else
+      elseif file:sub(-4,-1)==".lua" and isnt_ignored(file) then
         local name=f:gsub("/","."):sub(3,-5)
-          toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name:gsub("(%.)(%d)","[%2]").."=temp()\n"
-        end
+        toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name:gsub("(%.)(%d)","[%2]").."=temp()\n"
       end
     end
+  end
   return toreturn
 end
 local thesearch=search(".",{["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true,["makefile"]=true,["remap.lua"]=true,["go.lua"]=true,["index.html"]=true,["log.php"]=true,["404.lua"]=true,["banlist.php"]=true,["ban.php"]=true,["unban.php"]=true,["isbanned.php"]=true,["help.php"]=true})
-
+thesearch=thesearch.."\n\nhandle=tbl.src.init(tbl)"
 print(thesearch)
