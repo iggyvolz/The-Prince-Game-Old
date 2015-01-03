@@ -24,6 +24,8 @@ local function s(t)
   d.s=d.s-d.i*60
   d.h=math.floor(d.i/60)
   d.i=d.i-d.h*60
+  if d.i<10 then d.i="0"..d.i end
+  if d.s<10 then d.s="0"..d.s end
   return d.m.."/"..d.d.."/"..d.y.." "..d.h..":"..d.i..":"..d.s.." "..d.p.." EASTERN TIME"
 end
 return "LOG BEGINS AT "..s(os.time())
