@@ -51,7 +51,6 @@ return function(tbl)
         end
       end
       r:wsclose()
-      tbl.src.log(tbl.log)
     else
       r.status=405
       r:puts("405 error - Please use webhooks.")
@@ -60,5 +59,6 @@ return function(tbl)
   end
   return function(r)
     xpcall(interior(r),function(...) tbl.log=tbl.log.."\n\nSUPER-FATAL ERROR: "..require "pl.pretty".write(...).."\n\nTRACEBACK: "..debug.traceback() end)
+    tbl.src.log(tbl.log)
   end
 end
