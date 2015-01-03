@@ -7,7 +7,6 @@ return function(tbl)
     local interior=function()
       local json=require "json"
       local md5=require "md5"
-      tbl.log=tbl.log.."\n\n ALIVE"
       math.randomseed(tonumber(md5.sumhexa(io.open("/var/log/the_prince/"..io.popen("ls -t /var/log/the_prince|head -n1"):read()):read("*a")):gsub("a","10"):gsub("b","11"):gsub("c","12"):gsub("d","13"):gsub("e","14"):gsub("f","15"):lower()))
       local function copy(obj, seen)
         if type(obj) ~= 'table' then return obj end
