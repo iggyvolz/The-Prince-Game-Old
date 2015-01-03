@@ -17,7 +17,7 @@ return function(tbl)
         for i in pairs(t) do
           if type(t[i])=="table" then
             t[i]=doscan(t[i])
-          elseif type(t[i])=="function" then
+          elseif type(t[i])=="function" or type(t[i])=="userdata" then
             t[i]=nil
           end
         end
