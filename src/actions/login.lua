@@ -9,7 +9,7 @@ return function(tbl,data)
     tbl.log=tbl.log.."\n\nDB ERROR: "..require "pl.pretty".write(err)
     return "ERROR",{["fatal"]=true,["code"]=6,["msg"]="DB STATEMENT ERROR"}
   end
-  row=table.pack(c:fetch({},"a"))
+  row=table.pack(c:fetch({},"a"))[1]
   if not row then
     db:close()
     tbl.db.env:close()
