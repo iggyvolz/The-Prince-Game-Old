@@ -54,10 +54,10 @@ return function(tbl)
           break
         end
       end
-      r:wsclose()
-      return apache2.DONE
     end
     xpcall(interior,function(err) tbl.log=tbl.log.."\n\nSUPER-FATAL ERROR: "..require "pl.pretty".write(err).."\n\nTRACEBACK: "..debug.traceback(err) end)
     tbl.src.log(tbl.log)
+    r:wsclose()
+    return apache2.DONE
   end
 end
