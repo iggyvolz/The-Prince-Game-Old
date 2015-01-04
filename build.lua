@@ -1,8 +1,9 @@
 local lfs = require "lfs"
 require "io"
 local function isnt_ignored(f)
-  for v in ipairs(arg) do
-    if v == f:sub(-4,-1) then
+  for i,v in ipairs(arg) do
+    if false then print(i) end -- dummy for luacheck
+    if v == f:sub(1,-5) then
       return false
     end
   end
