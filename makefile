@@ -6,10 +6,10 @@ globals := apache2 remap handle quick parent
 site_deploy_files := quick.lua remap.lua index.html log.php banlist.php ban.php unban.php isbanned.php help.php
 site_deploy_target := /usr/local/The-Prince-Game/
 build:
-	@lua build.lua $(build_ignore)>$(build_target)
+	lua build.lua $(build_ignore)>$(build_target)
 check: build
-	@luacheck `find .|grep lua` --globals $(globals)
+	luacheck `find .|grep lua` --globals $(globals)
 deploy:
-	@cp $(build_target) $(deploy_target)
+	cp $(build_target) $(deploy_target)
 deploy-site:
-	@cp $(site_deploy_files) $(site_deploy_target)
+	cp $(site_deploy_files) $(site_deploy_target)
