@@ -1,8 +1,8 @@
 <?php
-$banlist=explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1]));
-$begin=explode("return {",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[0]."return {";
-$ptbanlist=explode("return {",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[1];
-$end="}\n end\ntbl.bans=temp()".explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[1];
+$banlist=explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0]))-1]));
+$begin=explode("return {",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0])[0]."return {";
+$ptbanlist=explode("return {",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0])[1];
+$end="}\n end\ntbl.bans=temp()".explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[1];
 $msg=json_decode(file_get_contents("php://input"))->item->message->message;
 $user=explode("@unbanish ",$msg)[1];
 if($user=="The-Prince-Bot")
@@ -19,7 +19,7 @@ elseif(!in_array($user,$banlist))
 else
 {
   $conts=$begin.str_replace(",\"$user\"","",$ptbanlist).$end;
-  file_put_contents("go.lua",$conts);
+  file_put_contents("dev.lua",$conts);
   $user=htmlspecialchars($user);
   $data="User \"$user\" has been unbanned";
   $color="green";

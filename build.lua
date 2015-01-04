@@ -30,6 +30,6 @@ local function search (path,excl)
   end
   return toreturn
 end
-local thesearch=search(".",{["."]=true,[".."]=true,[".git"]=true,[".gitignore"]=true,["build.lua"]=true,["quick.lua"]=true,["README.md"]=true,["makefile"]=true,["remap.lua"]=true,["go.lua"]=true,["index.html"]=true,["log.php"]=true,["404.lua"]=true,["banlist.php"]=true,["ban.php"]=true,["unban.php"]=true,["isbanned.php"]=true,["help.php"]=true})
+local thesearch=search(".")
 thesearch=thesearch.."\n\nhandle=tbl.src.init(tbl)"
 print(thesearch)

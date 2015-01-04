@@ -1,5 +1,5 @@
 <?php
-$banlist=explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1]));
+$banlist=explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0]))-1]));
 //$msg=$argv[1];
 $msg=json_decode(file_get_contents("php://input"))->item->message->message;
 $user=explode("@isbanished ",$msg)[1];

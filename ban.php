@@ -1,5 +1,5 @@
 <?php
-$banlist=explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"))[0]))-1]));
+$banlist=explode(",",str_replace("\"","",explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0])[count(explode("{",explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"))[0]))-1]));
 //$msg=$argv[1];
 $msg=json_decode(file_get_contents("php://input"))->item->message->message;
 $user=explode("@banish ",$msg)[1];
@@ -11,9 +11,9 @@ if(in_array($user,$banlist))
 }
 else
 {
-  $expl=explode("}\n end\ntbl.bans=temp()",file_get_contents("go.lua"));
+  $expl=explode("}\n end\ntbl.bans=temp()",file_get_contents("dev.lua"));
   $conts=$expl[0].",\"$user\"}\n end\ntbl.bans=temp()".$expl[1];
-  file_put_contents("go.lua",$conts);
+  file_put_contents("dev.lua",$conts);
   $user=htmlspecialchars($user);
   $data="User \"$user\" has been banned";
   $color="green";
