@@ -16,7 +16,7 @@ local function search (path,excl)
     toreturn=toreturn.."tbl."..path:gsub("/","."):sub(3):gsub("(%.)(%d)","[%2]").."={}\n"
   end
   for file in lfs.dir(path) do
-    if not excl[file] then
+    if file:sub(1,1) ~= "." then
       local f = path..'/'..file
       local attr = lfs.attributes (f)
       if type(attr) ~= "table" then break end
