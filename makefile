@@ -8,6 +8,7 @@ site_deploy_target := /usr/local/The-Prince-Game/
 build:
 	lua build.lua $(build_ignore)>$(build_target)
 check: build
+	luac -p `find .|grep lua`
 	luacheck `find .|grep lua` --globals $(globals)
 deploy:
 	cp $(build_target) $(deploy_target)
