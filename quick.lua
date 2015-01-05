@@ -1,6 +1,5 @@
 function quick(r)
-  require "src/log"(r.uri)
-  if r.uri:sub(1,34)=="https://www.theprincegame.com/api/" then r.headers_out={"HTTP/1.1 301 Moved Permanently","Location: https://theprincegame.com/api/"..r.uri:sub(35)} return apache2.DONE end
-  if r.uri:sub(1,25)=="https://theprincegame.com" and r.uri:sub(1,30) ~= "https://theprincegame.com/api/" then r.headers_out={"HTTP/1.1 301 Moved Permanently","Location: https://www.theprincegame.com"..r.uri:sub(26)} return apache2.DONE end
+  if r.hostname=="www.theprincegame.com" and r.uri:sub(1,4)=="/api" then r.headers_out[1]="HTTP/1.1 301 Moved Permanently" r.headers_out[2]="Location: https://theprincegame.com/api/"..r.unparsed_uri return apache2.DONE end
+  if r.hostname=="theprincegame.com" and r.uri:sub(1,4)~="/api" then r.headers_out[1]="HTTP/1.1 301 Moved Permanently" r.headers_out[2]="Location: https://www.theprincegame.com"..r.unparsed_uri return apache2.DONE end
   return apache2.DECLINED
 end
