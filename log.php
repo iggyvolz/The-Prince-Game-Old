@@ -32,10 +32,11 @@ submit_post($mode,$subject,$username,$topic_type,$poll,$data);
 $token="gqEC5ltd7fDKdbjFMYC5A9TOxlDJWZAa2Ppwy5uw";
 $url = "https://api.hipchat.com/v2/room/1052690/notification?auth_token=$token";
 $hmessage=htmlspecialchars($message);
+$pid=$data["post_id"];
 $options = array(
   'auth_token' => $token,
   'color' => 'green',
-  'message' => "$subject <br/><br/><p>$hmessage</p>",
+  'message' => "<a href=\"https://www.theprincegame.com/forums/viewtopic.php?f=7&t=$pid\">$subject</a>",
   'notify' => false,
   'message_format' => 'html'
 );
