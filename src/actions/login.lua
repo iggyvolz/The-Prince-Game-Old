@@ -32,7 +32,15 @@ return function(tbl,data)
   end
   row2=c:fetch({},"a")
   tbl.username=row2.username
-  if tbl.bans[tbl.username] then
+  local function banned(u)
+    for _,v in ipairs(tbl.bans) do
+      if v == u then
+        return true
+      end
+    end
+  return false
+  end
+  if banned(tbl.username) then
     db:close()
     tbl.db.env:close()
     tbl.log=tbl.log.."\n\nUSER BANNED"
