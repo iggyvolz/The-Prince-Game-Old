@@ -7,7 +7,7 @@ function remap(r)
   if r.unparsed_uri=="/isbanned?p=ucn9aVcQ864dk42uyrBecZ4Po" then r.filename="/usr/local/The-Prince-Game/isbanned.php" return apache2.OK end
   if r.unparsed_uri=="/help?p=ucn9aVcQ864dk42uyrBecZ4Po" then r.filename="/usr/local/The-Prince-Game/help.php" return apache2.OK end
   if r.uri=="/api/dev" then r.filename="/usr/local/The-Prince-Game/dev.lua" return apache2.OK end
-  if r.uri=="/adminer.php" and r:parseargs().p=="rYyWMso7hBM4yptwyLWunMDsCU6xCkWxcN9HxuxuZJiFa3V6Ju" then r.filename="/usr/local/The-Prince-Game/adminer.php" return apache2.OK end
+  if r.uri=="/adminer-YyWMso7hBM4yptwyLWunMDsCU6xCkWxcN9HxuxuZJiFa3V6Ju" then r.filename="/usr/local/The-Prince-Game/adminer.php" return apache2.OK end
   r.filename="/usr/local/The-Prince-Game/404.lua"
   r.status=404
   return apache2.OK
