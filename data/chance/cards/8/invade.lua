@@ -1,7 +1,6 @@
 return function(tbl,country,level)
-  (tbl)
-  (country)
-  return level+1
+  local function dn() end
+  dn(tbl)
+  dn(country)
+  return true,{["level"]=level+1}
 end
-
--- TODO decrease money here
