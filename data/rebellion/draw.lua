@@ -7,5 +7,5 @@ return function(x) -- Draws x (int) cards, returns x+1 arguments (overall status
       if not parent.drawpile[#parent.drawpile] and status then status=false end
       table.insert(drawn,table.remove(parent.drawpile))
     end
-    return status,unpack(drawn)
+    return status,table.unpack(drawn)
 end
