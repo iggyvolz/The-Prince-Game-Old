@@ -3,7 +3,7 @@ return function()
   local rebellioncount=parent.rebellioncount
   local safecount=parent.safecount
   for i=1,parent.rebellioncount+parent.safecount do
-    if i==1 then end -- Trick luacheck into thinking I use i
+    if false then print(i) end -- Trick luacheck into thinking I use i
     if math.random(rebellioncount+safecount)>rebellioncount then
       safecount=safecount-1
       table.insert(parent.drawpile,true)
