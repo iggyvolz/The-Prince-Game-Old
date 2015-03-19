@@ -4,7 +4,7 @@ build_ignore := 404 build quick remap dev
 deploy_target := /usr/local/The-Prince-Game/$(branch).lua
 globals := apache2 remap handle quick parent
 lua_target := 52
-site_deploy_files := quick.lua remap.lua index.html log.php banlist.php ban.php unban.php isbanned.php help.php
+site_deploy_files := quick.lua remap.lua index.html log.php banlist.php ban.php unban.php isbanned.php help.php zohoverify/verifyforzoho.html
 site_deploy_target := /usr/local/The-Prince-Game/
 build:
 	lua build.lua $(build_ignore)>$(build_target)
