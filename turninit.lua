@@ -1,5 +1,4 @@
 return function()
-  math.randomseed(os.time())
     --TODO check if can init turn
     local data,toreturn,toremove=require "data",{},{}
     for i=1,#data.my_cards do
