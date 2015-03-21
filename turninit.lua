@@ -1,6 +1,7 @@
 return function()
+  math.randomseed(os.time())
     --TODO check if can init turn
-    local data,toreturn=require "data",{}
+    local data,toreturn,toremove=require "data",{},{}
     for i=1,#data.my_cards do
         local thiscard={["card"]={}}
         thiscard.lose,thiscard.safe,thiscard.card[1],thiscard.card[2],thiscard.card[3],thiscard.card[4]=false,data.rebellion.draw(data.principalities[data.my_cards[i]].rebellion_cards)
@@ -8,10 +9,14 @@ return function()
             thiscard.dieroll=math.random(1,6)
             if thiscard.dieroll<data.rebellion.num then
                 thiscard.lose=true
-                table.unpack(data.my_cards,i)
+                table.insert(toremove,i)
             end
         end
         toreturn[data.my_cards[i]]=thiscard
+    end
+    for i=1,#toremove do
+      print(i)
+      print(table.remove(data.my_cards,toremove[i]-i+1))
     end
     return toreturn
 end
