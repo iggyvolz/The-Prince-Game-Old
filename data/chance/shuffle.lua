@@ -1,8 +1,8 @@
 return function()
-    if parent.discardpile == nil then parent.discardpile=parent.cards end -- INITIALIZATION
-    parent.drawpile={}
-    while #parent.discardpile ~=0 do
-        table.insert(parent.drawpile,table.remove(parent.discardpile,math.random(#parent.discardpile)))
+    if data.chance.discardpile == nil then data.chance.discardpile=data.chance.cards end -- INITIALIZATION
+    data.chance.drawpile={}
+    while #data.chance.discardpile ~=0 do
+        table.insert(data.chance.drawpile,table.remove(data.chance.discardpile,math.random(#data.chance.discardpile)))
     end
-    parent.discardpile={}
+    data.chance.discardpile={}
 end
