@@ -3,9 +3,9 @@ return function(x) -- Draws x (int) cards, returns x+1 arguments (overall status
     local drawn={}
     for i=1,x do
       if false then print(i) end -- Trick luacheck into thinking I use i
-      if #parent.drawpile == 0 then parent.shuffle() end
-      if not parent.drawpile[#parent.drawpile] and status then status=false end
-      table.insert(drawn,table.remove(parent.drawpile))
+      if #data.rebellion.drawpile == 0 then data.rebellion.shuffle() end
+      if not data.rebellion.drawpile[#data.rebellion.drawpile] and status then status=false end
+      table.insert(drawn,table.remove(data.rebellion.drawpile))
     end
     return status,table.unpack(drawn)
 end
