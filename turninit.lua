@@ -1,6 +1,5 @@
-return function(env)
+return function(data)
     --TODO check if can init turn
-    local data=env.data
     local toreturn={}
     for i=1,#data.my_cards do
         local thiscard={}
