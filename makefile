@@ -1,4 +1,4 @@
-lua_target := 52
+lua_target := 
 GLOBALS := data unpack
 build:
 	lua build.lua $(build_ignore)>data.lua
