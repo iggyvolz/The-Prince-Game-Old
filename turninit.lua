@@ -17,5 +17,7 @@ return function()
       print(i)
       print(table.remove(data.my_cards,toremove[i]-i+1))
     end
+    for i=1,#data.my_cards do
+        data.my_money=data.my_money+data.principalities[data.my_cards[i]].tribute
     return toreturn
 end
