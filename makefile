@@ -1,5 +1,5 @@
 lua_target := 
-GLOBALS := data unpack describe it
+GLOBALS := data unpack describe it love
 build:
 	lua build.lua>data.lua
 check: build
