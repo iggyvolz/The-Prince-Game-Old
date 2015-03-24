@@ -19,5 +19,6 @@ return function()
     end
     for i=1,#data.my_cards do
         data.my_money=data.my_money+data.principalities[data.my_cards[i]].tribute
+    end
     return toreturn
 end
