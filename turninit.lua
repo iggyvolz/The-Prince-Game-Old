@@ -20,5 +20,6 @@ return function()
     for i=1,#data.my_cards do
         data.my_money=data.my_money+data.principalities[data.my_cards[i]].tribute
     end
+    data.chance.turnends()
     return toreturn
 end
