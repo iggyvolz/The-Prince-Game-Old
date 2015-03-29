@@ -1,4 +1,4 @@
-return function(country,level)
-  if false then print(country) end
-  return true,{["level"]=level+1}
+return function(country,type)
+  if type==3 then return country,3 end
+  return country,type+1
 end

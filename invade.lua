@@ -36,6 +36,9 @@ return function(data,country,type)
         return false,"Not enough money!"
     end
     data.my_money=data.my_money-cost
+    if data.chance.cards[data.chance.cards.activecard] and data.chance.cards[data.chance.cards.activecard].invade then
+      country,type=data.chance.cards[data.chance.cards.activecard].invade(country,type)
+    end
     local dieroll=data.random(1,6)
     local okdierolls={{1},{nil,1,nil,1,nil,1},{1,1,1,1,1}}
     local dieresult=nil
