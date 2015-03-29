@@ -8,7 +8,7 @@ return function()
     table.insert(data.chance.discardpile,data.chance.activecard)
     data.chance.activecard=table.remove(data.chance.drawpile)
     data.chance.cardturnsleft=3
-    if data.chance.cards[data.chance.activecard].draw then
+    if data.chance.cards[data.chance.activecard] and data.chance.cards[data.chance.activecard].draw then
       data.chance.cards.draw()
     end
 end

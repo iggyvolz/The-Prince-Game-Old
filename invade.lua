@@ -38,7 +38,17 @@ return function(data,country,type)
     data.my_money=data.my_money-cost
     local dieroll=data.random(1,6)
     local okdierolls={{1},{nil,1,nil,1,nil,1},{1,1,1,1,1}}
-    if okdierolls[type][dieroll] then
+    local dieresult=nil
+    if data.chance.cards[data.chance.cards.activecard] and data.chance.cards[data.chance.cards.activecard].roll then
+      local result=data.chance.cards[data.chance.cards.activecard].roll()
+      if result==true then
+        dieresult=true
+      elseif result==false then -- Allow for
+        dieresult=false
+      end
+    end
+    if dieresult==nil then dieresult=okdierolls[type][dieroll] end
+    if dieresult then
         data.principalities[country].owner="me"
         table.insert(data.my_cards,country)
         return true,nil,dieroll
