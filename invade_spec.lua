@@ -382,4 +382,19 @@ describe("Invade",function()
       end)
     end)
   end)
+  describe("that uses mercenaries",function()
+    local data=gdata()
+    local base_cost=data.principalities.naples.invasion
+    data.my_money=99999
+    data.random=function() return 4 end
+    data.principalities.naples.owner=nil
+    data.chance.activecard=8
+    local invasion=invade(data,"naples",4)
+    it("should return true",function()
+      assert.are.equal(true,invasion)
+    end)
+    it("should decrease money by base_cost",function()
+      assert.are.equal(99999-base_cost,data.my_money)
+    end)
+  end)
 end)
