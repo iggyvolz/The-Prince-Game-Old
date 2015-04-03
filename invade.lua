@@ -40,13 +40,13 @@ return function(data,country,type)
     country,type=data.chance.cards[data.chance.cards.activecard].invade(country,type)
   end
   local dieroll=data.random(1,6)
-  local okdierolls={{1},{nil,1,nil,1,nil,1},{1,1,1,1,1}}
+  local okdierolls={{1},{nil,1,nil,1,nil,1},{1,1,1,1,1},{1,1,1,1,1,1}}
   local dieresult=nil
   if data.chance.cards[data.chance.cards.activecard] and data.chance.cards[data.chance.cards.activecard].roll then
     local result=data.chance.cards[data.chance.cards.activecard].roll()
     if result==true then
       dieresult=true
-    elseif result==false then -- Allow for
+    elseif result==false then -- Allow for nil
       dieresult=false
     end
   end
