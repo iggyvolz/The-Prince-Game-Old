@@ -1,6 +1,6 @@
 return function(data,country,type)
   -- TODO - check if can invade
-  if type//1~=type or type<1 or type>4 or (type==3 and data.chance.activecard ~= 8) then
+  if type//1~=type or type<1 or type>4 or (type==4 and data.chance.activecard ~= 8) then
     return false,"Invalid type!"
   end
   for i=1,#data.my_cards do
