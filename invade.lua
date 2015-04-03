@@ -18,7 +18,7 @@ return function(data,country,type)
   if data.principalities[country].owner and unownedprincipalitiesexist then
     return false,"Someone already owns this country!"
   end
-  local cost=data.principalities[country].invasion*type
+  local cost=data.principalities[country].invasion*(type<4 and type or 1)
   if data.principalities[country].owner then
     local breakout
     for _,v in pairs(data.principalities) do
