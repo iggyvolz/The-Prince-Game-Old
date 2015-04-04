@@ -1,7 +1,7 @@
 return function()
     data.chance.cardturnsleft=data.chance.cardturnsleft-1
     if data.chance.cardturnsleft>0 then return end
-    if data.chance.cards[data.chance.activecard].discard then
+    if data.chance.cards[data.chance.activecard] and data.chance.cards[data.chance.activecard].discard then
       data.chance.cards.discard()
     end
     if #data.chance.drawpile==0 then data.chance.shuffle() end
