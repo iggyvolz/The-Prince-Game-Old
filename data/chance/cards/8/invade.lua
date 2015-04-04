@@ -1,6 +1,4 @@
-return function(tbl,country,level)
-  local function dn() end
-  dn(tbl)
-  dn(country)
-  return true,{["level"]=level+1}
+return function(country,type)
+  if type==3 then return country,3 end
+  return country,type+1
 end

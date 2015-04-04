@@ -1,20 +1,11 @@
 local lfs = require "lfs"
 require "io"
-local function isnt_ignored(f)
-  for i,v in ipairs(arg) do
-    if false then print(i) end -- dummy for luacheck
-    if v == f:sub(1,-5) then
-      return false
-    end
-  end
-  return true
-end
 local function search (path,excl)
   local toreturn=""
-  if path == "." then
-    toreturn="local tbl={}\nlocal temp\n"
+  if path == "./data" then
+    toreturn="local data,temp={}\n"
   else
-    toreturn=toreturn.."tbl."..path:gsub("/","."):sub(3):gsub("(%.)(%d)","[%2]").."={}\n"
+    toreturn=toreturn..path:gsub("/","."):sub(3):gsub("(%.)(%d)","[%2]").."={}\n"
   end
   for file in lfs.dir(path) do
     if file:sub(1,1) ~= "." then
@@ -23,14 +14,13 @@ local function search (path,excl)
       if type(attr) ~= "table" then break end
       if attr.mode == "directory" then
         toreturn=toreturn..search(f,excl)
-      elseif file:sub(-4,-1)==".lua" and isnt_ignored(file) then
+      elseif file:sub(-4,-1)==".lua" then
         local name=f:gsub("/","."):sub(3,-5)
-        toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\ntbl."..name:gsub("(%.)(%d)","[%2]").."=temp()\n"
+        toreturn=toreturn.."temp=function() "..assert(io.open(f,"r")):read("*all").." end\n"..name:gsub("(%.)(%d)","[%2]").."=temp()\n"
       end
     end
   end
   return toreturn
 end
-local thesearch=search(".")
-thesearch=thesearch.."\n\nhandle=tbl.src.init(tbl)"
-print(thesearch)
+local thesearch=search("./data")
+print(thesearch.."\nreturn data")

@@ -1,5 +1,5 @@
-return function(tbl)
-  for k in tbl.data.principalities do
-    tbl.data.principalities[k].rebellion_cards=tbl.data.principalities[k].prior_rebellion_cards
+return function()
+  for k in data.principalities do
+    data.principalities[k].rebellion_cards=data.principalities[k].prior_rebellion_cards
   end
 end
