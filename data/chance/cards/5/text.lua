@@ -1,1 +1,0 @@
-return "For the next 3 turns, 10% of tribute (rounded up to nearest $100) must be given to the owner of the Papal States (or lost if the Papal States are unowned).\n\nThe following principalities are exempt from the tithe: England, Ottoman Empire, Venice, Egypt, Morocco, Papal States, and Naples"

@@ -1,1 +1,0 @@
-return "Chaos in Europe"

@@ -1,1 +1,0 @@
-return "Avoid being despised and hated"

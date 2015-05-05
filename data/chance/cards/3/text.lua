@@ -1,1 +1,0 @@
-return "Do not pick any Rebellion Cards for any new principality that you invade while this card is active"
